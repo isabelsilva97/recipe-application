@@ -5,3 +5,7 @@ a.card {
 a.card:hover {
   background-color: whitesmoke;
 }
+
+a.card.active {
+  background-color: aliceblue;
+}
