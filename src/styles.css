@@ -2,10 +2,10 @@ a.card {
   text-decoration: none;
 }
 
-a.card:hover {
+a.card:hover, .list-group-item:hover {
   background-color: whitesmoke;
 }
 
-a.card.active {
+a.card.active, .list-group-item.active {
   background-color: aliceblue;
 }
