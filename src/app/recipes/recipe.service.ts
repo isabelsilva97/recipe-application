@@ -10,10 +10,17 @@ export class RecipeService {
 
   constructor(private slService: ShoppingListService) { }
 
-  private recipes: Recipe[] = [
-    new Recipe('A test recipe', "This is a simply test recipe", "https://images.pexels.com/photos/2294477/pexels-photo-2294477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]),
-    new Recipe('Another test recipe', "This is a simply test recipe", "https://images.pexels.com/photos/2294477/pexels-photo-2294477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", [new Ingredient('Buns', 2), new Ingredient('Meat', 1)])
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe('A test recipe', "This is a simply test recipe", "https://images.pexels.com/photos/2294477/pexels-photo-2294477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]),
+  //   new Recipe('Another test recipe', "This is a simply test recipe", "https://images.pexels.com/photos/2294477/pexels-photo-2294477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", [new Ingredient('Buns', 2), new Ingredient('Meat', 1)])
+  // ];
+
+  private recipes: Recipe[] = [];
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
