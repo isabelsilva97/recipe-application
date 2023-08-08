@@ -1,0 +1,40 @@
+<div class="container pt-5 text-center">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="alert alert-danger" *ngIf="error">
+        <p class="m-0">{{error}}</p>
+      </div>
+      <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <form #authForm="ngForm" (submit)="onSubmit(authForm)" *ngIf="!isLoading">
+        <div class="mb-3">
+          <label for="email" class="form-label text-start">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="email@email.com" ngModel name="email"
+            required email>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label text-start">Password</label>
+          <input type="password" id="password" class="form-control" placeholder="********" minlength="6" ngModel
+            name="password" required> <!-- aria-describedby="passwordHelpBlock" -->
+          <!-- <div id="passwordHelpBlock" class="form-text">
+            Your password must be 6-20 characters long, contain letters and numbers, and must not contain spaces,
+            special characters, or emoji.
+          </div> -->
+        </div>
+        <div>
+          <div class="row">
+            <div class="col-6">
+              <button class="btn btn-primary w-100" type="submit"
+                [disabled]="!authForm">{{isLoginMode? 'Login' : 'Sign Up'}}</button>
+            </div>
+            <div class="col-6">
+              <button class="btn btn-secondary w-100" type="button" (click)="onSwitchMode()">Switch to
+                {{isLoginMode? 'Sign Up' : 'Login'}}</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
